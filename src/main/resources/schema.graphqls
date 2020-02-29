@@ -1,0 +1,30 @@
+scalar Date
+
+type Response {
+    id: ID!
+    method: String!
+    statusCode: Int!
+    message: String!
+    date: Date
+}
+
+input InputResponse {
+    method: String!
+    statusCode: Int
+    message: String
+}
+
+type Query {
+    getResponse(id: ID!): Response
+    getByMethod(method: String!): [Response]
+}
+
+type Mutation {
+    putResponse(responseBody: InputResponse): String
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
